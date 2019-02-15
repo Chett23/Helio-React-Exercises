@@ -3,10 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  
   render() {
     return (
-      <Keylogger />
+      <React.Fragment className='App'>
+        <Keylogger />
+        <Codelist />
+      </React.Fragment>
     );
   }
 }
@@ -23,13 +25,34 @@ class Keylogger extends Component {
 
   render() {
     return(
-      <div className="App">
+      <div className="keylogger">
         <div>
           Input Text: <input type='text' onChange={this.handleChange} />
         </div>
         <div>
          Input Value: {this.state.textValue}
         </div>
+      </div>
+    );
+  }
+}
+
+class Codelist extends Component {
+  state= {
+    textValue: '',
+  }
+
+  handleValueAdd(event){
+    alert(this.values[1])
+  }
+
+
+  render() {
+    let values = ['test']
+    return (
+      <div className='App'>
+        <button onClick={this.handleValueAdd(this.values)}>Add to List</button>
+        {/* <li>{this.values}</li> */}
       </div>
     );
   }
