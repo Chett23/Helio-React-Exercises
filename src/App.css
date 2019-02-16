@@ -1,20 +1,28 @@
+.newAssignment{
+  
+}
 .App{
   display: grid;
   text-align: center;
 }
 
 .keylogger {
-  align-self: flex-start;
-  justify-self: center;
-  order: 1;
+  text-align: center;
+  margin: 5%;
 }
 
 .add{
-  align-self: flex-start;
-  justify-self: center;
-  order: 2;
+  text-align: center;
+  margin: 5%;
 }
 
+button{
+  margin: 10px;
+}
+
+.Calc{
+  text-align: center;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
