@@ -1,5 +1,5 @@
-.newAssignment{
-  
+.newExcersise{
+  border-bottom: 2px black;
 }
 .App{
   display: grid;
@@ -14,6 +14,17 @@
 .add{
   text-align: center;
   margin: 5%;
+}
+
+ol{
+  list-style: none;
+  padding: 0;
+}
+
+ul{
+  list-style: none;
+  text-align: center;
+  padding: 0;
 }
 
 button{

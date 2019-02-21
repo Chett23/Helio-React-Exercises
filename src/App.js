@@ -7,6 +7,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <Keylogger />
+        <Codelist />
         <Calculator />
       </React.Fragment>
     );
@@ -60,7 +61,7 @@ class Keylogger extends Component {
         <div className='add'>
           <button onClick={this.handleValueAdd}>Add to List</button>
           <button onClick={this.clearList}>Clear List</button>
-          <ol>{this.state.listValues}</ol>
+          <ol>{this.state.listValues.map((item) => <li>{item}</li>)}</ol>
         </div>
       </div>
     );
@@ -103,27 +104,24 @@ class Calculator extends Component{
   }
 }
 
-// class Codelist extends Component {
-//   state= {
-//     listvalues: ['Nothing in your To-do list']
-//   }
+class Codelist extends Component {
+  state= {
+    skiResorts: ['Park City', 'Canyons', 'Deer Valley', 'Brighton', 'Solitude', 'Snow Bird', 'Alta', 'Vail', 'Tahoe']
+  }
 
-//   handleValueAdd(event){
-//     if (this.state.values[0] === 'Nothing in your To-do list') {
-//       this.state.values[0] = Keylogger.state.textValue
-//     } else {
-//       this.state.values.push = Keylogger.state.textValue
-//     }
-//   }
+  setToList = this.state.skiResorts.map((item) =>
+    <li>{item}</li>
+  )
 
-
-//   render() {
-//     return (
-//       <div className='add'>
-//         <button onClick={this.handleValueAdd}>Add to List</button>
-//       </div>
-//     );
-//   }
-// }
+  render() {
+    return (
+      <div className="App">
+        <h1>Code List</h1>
+        <ul>Some ski resorts to vist:
+          {this.setToList}</ul>
+      </div>
+    );
+  }
+}
 
 export default App;
