@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -22,66 +22,102 @@ class Keylogger extends Component {
   }
 
   handleChange = (element) => this.setState({
-    textValue : element.target.value
+    textValue: element.target.value
   })
 
-  handleValueAdd = () => {
-    if (this.state.listValues[0] === 'Nothing in your To-do list'){
+  handleValueAdd () {
+    if (this.state.listValues[0] === 'Nothing in your To-do list') {
       this.setState({
         itemNumber: this.state.itemNumber + 1,
         textValue: '',
         listValues: [(this.state.itemNumber + '. ' + this.state.textValue + ' ')]
       })
-    }else {
+    } else {
       this.setState({
         itemNumber: this.state.itemNumber + 1,
         textValue: '',
         listValues: [
-          ...this.state.listValues, 
+          ...this.state.listValues,
           (this.state.itemNumber + '. ' + this.state.textValue + ' ')
         ]
       })
     }
   }
 
+  wasEnter = (event) => {
+    if (event.key === 'Enter'){ 
+      return this.handleValueAdd()
+    }
+  }
+
+  clearItem = () => this.setState({
+    listValues: this.state.listValues.pop(this.state.itemNumber),
+    itemNumber: this.state.itemNumber - 1
+  })
+
   clearList = () => this.setState({
-    listValues: ['Nothing in your To-do list']
+    listValues: ['Nothing in your To-do list'],
+    textValue: '',
+    itemNumber: 1
   })
 
   render() {
-    return(
+    const items = this.state.listValues.map((item) => {
+      if (item === 'Nothing in your To-do list') {
+        return (
+          <li>
+            {item}
+          </li>
+        )
+      } else {
+        return (
+          <li>
+            {item}<button onClick={this.clearItem}>X</button>
+          </li>
+        )
+      }
+    })
+    return (
       <div className="keylogger">
         <h1>Keylogger</h1>
         <div>
-          Input Text: <input type='text' onChange={this.handleChange} />
+          Input Text: 
+          <input 
+            type='text'  
+            id="textField" 
+            onChange={this.handleChange} 
+            value={this.state.textValue}
+            onKeyPress={this.wasEnter.bind(this)}
+          />
         </div>
         <div>
-         Input Value: {this.state.textValue}
+          Input Value: {this.state.textValue}
         </div>
         <div className='add'>
           <button onClick={this.handleValueAdd}>Add to List</button>
           <button onClick={this.clearList}>Clear List</button>
-          <ol>{this.state.listValues.map((item) => <li>{item}</li>)}</ol>
+          <ol>
+            {items}
+          </ol>
         </div>
       </div>
     );
   }
 }
 
-
-class Calculator extends Component{
-  state={
+class Calculator extends Component {
+  state = {
     num1: 0,
     num2: 0,
     total: 0
   }
 
   handleChangeNum1 = (element) => this.setState({
-    num1 : parseInt(element.target.value)
+    num1: parseInt(element.target.value)
   })
 
   handleChangeNum2 = (element) => this.setState({
-    num2 : parseInt(element.target.value)
+    num2: parseInt(element.target.value)
   })
 
   addTheNumbers = () => this.setState({
@@ -89,15 +125,15 @@ class Calculator extends Component{
   })
 
   render() {
-    return(
+    return (
       <div className='Calc'>
         <h1>Add Two Numbers</h1>
-        Num 1: <input onChange={this.handleChangeNum1} type="text"/>
-        <br/>
-        Num 1: <input onChange={this.handleChangeNum2} type="text"/>
-        <br/>
+        Num 1: <input onChange={this.handleChangeNum1} type="text" />
+        <br />
+        Num 1: <input onChange={this.handleChangeNum2} type="text" />
+        <br />
         <button onClick={this.addTheNumbers}>Add</button>
-        <br/>
+        <br />
         {this.state.total}
       </div>
     );
@@ -105,7 +141,7 @@ class Calculator extends Component{
 }
 
 class Codelist extends Component {
-  state= {
+  state = {
     skiResorts: ['Park City', 'Canyons', 'Deer Valley', 'Brighton', 'Solitude', 'Snow Bird', 'Alta', 'Vail', 'Tahoe']
   }
 
