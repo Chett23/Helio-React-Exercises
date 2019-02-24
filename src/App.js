@@ -7,25 +7,34 @@ class App extends Component {
     return (
       <React.Fragment>
         <Keylogger />
+        <hr />
         <Codelist />
+        <hr />
         <Calculator />
+        <hr />
       </React.Fragment>
     );
   }
 }
 
 class Keylogger extends Component {
-  state = {
-    textValue: '',
-    listValues: ['Nothing in your To-do list'],
-    itemNumber: 1
+  constructor(props) {
+    super(props);
+    this.wasEnter = this.wasEnter.bind(this);
+    this.state = {
+      textValue: '',
+      listValues: ['Nothing in your To-do list'],
+      updatedList: [],
+      itemNumber: 1,
+      searchValue: ''
+    }
   }
 
   handleChange = (element) => this.setState({
     textValue: element.target.value
   })
 
-  handleValueAdd () {
+  handleValueAdd = () => {
     if (this.state.listValues[0] === 'Nothing in your To-do list') {
       this.setState({
         itemNumber: this.state.itemNumber + 1,
@@ -44,16 +53,24 @@ class Keylogger extends Component {
     }
   }
 
+  handleSearch = (event) => this.setState({
+    searchValue: event.target.value
+  })
+
   wasEnter = (event) => {
-    if (event.key === 'Enter'){ 
+    if (event.key === 'Enter' && this.state.textValue !== '') {
       return this.handleValueAdd()
     }
   }
 
-  clearItem = () => this.setState({
-    listValues: this.state.listValues.pop(this.state.itemNumber),
-    itemNumber: this.state.itemNumber - 1
-  })
+  clearItem = (item) => {
+    const list = this.state.listValues
+    this.setState({
+      updatedList: list
+    })
+    console.log(item.key)
+    console.log(this.state.updatedList)
+  }
 
   clearList = () => this.setState({
     listValues: ['Nothing in your To-do list'],
@@ -72,22 +89,40 @@ class Keylogger extends Component {
       } else {
         return (
           <li>
-            {item}<button onClick={this.clearItem}>X</button>
+            {item}
           </li>
         )
       }
     })
+
+    const searchList = this.state.listValues.filter((x) => { return x.includes(this.state.searchValue) })
+      .map((item) => {
+        return (
+          <li>
+            {item}
+          </li>
+        )
+      })
+
     return (
-      <div className="keylogger">
+      <div className="keylogger" >
         <h1>Keylogger</h1>
         <div>
-          Input Text: 
-          <input 
-            type='text'  
-            id="textField" 
-            onChange={this.handleChange} 
+          <input
+            placeholder='Add something to the list...'
+            type='text'
+            id="textField"
+            onChange={this.handleChange}
             value={this.state.textValue}
-            onKeyPress={this.wasEnter.bind(this)}
+            onKeyPress={this.wasEnter}
+          />
+        </div>
+        <div>
+          <input
+            placeholder='Search for something in the list...'
+            type='text'
+            id="textField"
+            onChange={this.handleSearch}
           />
         </div>
         <div>
@@ -97,7 +132,7 @@ class Keylogger extends Component {
           <button onClick={this.handleValueAdd}>Add to List</button>
           <button onClick={this.clearList}>Clear List</button>
           <ol>
-            {items}
+            {this.state.searchValue === '' ? items : searchList.length ? searchList : <li>These arent the Droids you're looking for</li>}
           </ol>
         </div>
       </div>
@@ -154,7 +189,10 @@ class Codelist extends Component {
       <div className="App">
         <h1>Code List</h1>
         <ul>Some ski resorts to vist:
-          {this.setToList}</ul>
+          <br />
+          {this.setToList}
+        </ul>
+        <br />
       </div>
     );
   }

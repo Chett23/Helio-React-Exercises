@@ -16,6 +16,14 @@
   margin: 5%;
 }
 
+button{
+  border: none;
+}
+
+input{
+  width: 250px;
+}
+
 ol{
   list-style: none;
   padding: 0;
