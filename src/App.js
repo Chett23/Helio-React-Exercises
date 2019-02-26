@@ -14,6 +14,7 @@ import Calculator from './Calculator';
 
 const Home = () => (
   <div>
+    <hr />
     <h2>Home</h2>
   </div>
 )
@@ -25,10 +26,10 @@ class App extends Component {
         <div>
             <ul className="Nav_Menu">
               <h1>Helio Training React Exercises</h1>
-                <li><NavLink to='/' className="Nav_Link">Home</NavLink></li>
-                <li><NavLink to='/Keylogger' className="Nav_Link">Keylogger</NavLink></li>
-                <li><NavLink to='/Calculator' className="Nav_Link">Calculator</NavLink></li>
-                <li><NavLink to='/CodeList' className="Nav_Link">Code List</NavLink></li>
+                <li><NavLink to='/' className="Nav_Link1">Home</NavLink></li>
+                <li><NavLink to='/Keylogger' className="Nav_Link2">Keylogger</NavLink></li>
+                <li><NavLink to='/Calculator' className="Nav_Link3">Calculator</NavLink></li>
+                <li><NavLink to='/CodeList' className="Nav_Link4">Code List</NavLink></li>
             </ul>
 
             <Route exact path="/" component={Home}/>

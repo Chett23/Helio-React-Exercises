@@ -4,20 +4,54 @@
 
 .Nav_Menu{
   display: inline-grid;
-  grid-template-columns: 10px auto 70px 70px 70px 70px;
+  width: 100%;
+  grid-template-columns: 10px auto 100px 100px 100px 100px 10px;
 }
 
 .Nav_Menu h1{
   grid-column-start: 2;
   grid-column-end: span 1;
+  text-align: left;
+  align-self: center;
   width: 100%;
-  margin: 0 10px;
+  margin: 10px
 }
 
-.Nav_Link{
+.Nav_Link1{
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  grid-column-start: 3;
+  grid-column-end: span 1;
+  align-self: center;
+  padding: 0;
+}
+
+.Nav_Link2{
   margin: 5px;
   text-decoration: none;
   color: black;
+  grid-column-start: 4;
+  grid-column-end: span 1;
+  align-self: center;
+}
+
+.Nav_Link3{
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+  grid-column-start: 5;
+  grid-column-end: span 1;
+  align-self: center;
+}
+
+.Nav_Link4{
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+  grid-column-start: 6;
+  grid-column-end: span 1;
+  align-self: center;
 }
 
 .keylogger {
