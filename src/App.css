@@ -1,13 +1,27 @@
 .excersise{
   text-align: center;
 }
-.AppDiv{
-  background-color: grey;
+
+.Nav_Menu{
+  display: inline-grid;
+  grid-template-columns: 10px auto 70px 70px 70px 70px;
+}
+
+.Nav_Menu h1{
+  grid-column-start: 2;
+  grid-column-end: span 1;
+  width: 100%;
+  margin: 0 10px;
+}
+
+.Nav_Link{
+  margin: 5px;
+  text-decoration: none;
+  color: black;
 }
 
 .keylogger {
   text-align: center;
-  margin: 5%;
 }
 
 .add{
@@ -44,6 +58,11 @@ ul{
 button{
   margin: 10px;
 }
+
+h2{
+  text-align: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

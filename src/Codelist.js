@@ -12,13 +12,13 @@ class Codelist extends Component {
   render() {
     return (
       <div className="excersise">
+        <hr />
         <h1>Code List</h1>
         <ul>Some ski resorts to vist:
             <br />
           {this.setToList}
         </ul>
         <br />
-        <hr />
       </div>
     );
   }

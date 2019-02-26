@@ -91,6 +91,7 @@ class Keylogger extends Component {
 
         return (
             <div className="keylogger" >
+                <hr />
                 <h1>Keylogger</h1>
                 <div className="inputs">
                     <input
@@ -121,7 +122,6 @@ class Keylogger extends Component {
                         {this.state.searchValue === '' ? items : searchList.length ? searchList : <li>These arent the Droids you're looking for</li>}
                     </ol>
                 </div>
-                <hr />
             </div>
         );
     }

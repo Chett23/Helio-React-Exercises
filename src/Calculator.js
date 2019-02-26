@@ -22,6 +22,7 @@ class Calculator extends Component {
   render() {
     return (
       <div className='excersise'>
+      <hr />
         <h1>Add Two Numbers</h1>
         Num 1: <input onChange={this.handleChangeNum1} type="text" />
         <br />
@@ -30,7 +31,6 @@ class Calculator extends Component {
         <button onClick={this.addTheNumbers}>Add</button>
         <br />
         {this.state.total}
-        <hr />
       </div>
     );
   }
