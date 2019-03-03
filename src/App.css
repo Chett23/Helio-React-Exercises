@@ -14,7 +14,7 @@
   text-align: left;
   align-self: center;
   width: 100%;
-  margin: 10px
+  margin: 10px;
 }
 
 .Nav_Link1{
@@ -65,12 +65,12 @@
 
 button{
   margin: 0;
-  padding: 0;
+  padding: 3px;
   border: none;
 }
 
 .input{
-  width: 260px;
+  width: 254px;
 }
 
 .search input{

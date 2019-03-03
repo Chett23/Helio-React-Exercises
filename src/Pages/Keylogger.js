@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from '../Components/Button';
+import List from '../Components/List';
 
 class Keylogger extends Component {
     constructor(props) {
@@ -18,7 +20,7 @@ class Keylogger extends Component {
     })
 
     handleValueAdd = () => {
-        if (this.state.textValue == '') {
+        if (this.state.textValue === '') {
 
         } else if (this.state.listValues[0] === 'Nothing in your To-do list') {
             this.setState({
@@ -48,14 +50,13 @@ class Keylogger extends Component {
         }
     }
 
-    // clearItem = (item) => {
-    //   const list = this.state.listValues
-    //   this.setState({
-    //     updatedList: list
-    //   })
-    //   console.log(item.key)
-    //   console.log(this.state.updatedList)
-    // }
+    clearItem = (index) => () => {
+      this.state.listValues.splice(index, 1)
+      this.setState({
+        listValues: this.state.listValues
+      })
+    }
+
 
     clearList = () => this.setState({
         listValues: ['Nothing in your To-do list'],
@@ -64,27 +65,27 @@ class Keylogger extends Component {
     })
 
     render() {
-        const items = this.state.listValues.map((item) => {
+        const list = this.state.listValues.map((item, i) => {
             if (item === 'Nothing in your To-do list') {
                 return (
-                    <li>
+                    <li key='i'>
                         {item}
                     </li>
                 )
             } else {
                 return (
-                    <li>
-                        {item}<button onClick={this.clearItem}>X</button>
+                    <li key='i'>
+                        {item}<Button onClick={this.clearItem(i)}>x</Button>
                     </li>
                 )
             }
         })
 
         const searchList = this.state.listValues.filter((x) => { return x.includes(this.state.searchValue) })
-            .map((item) => {
+            .map((item, i) => {
                 return (
-                    <li>
-                        {item}<button onClick={this.clearItem}>X</button>
+                    <li key='i'>
+                        {item}<Button onClick={this.clearItem(i)}>x</Button>
                     </li>
                 )
             })
@@ -97,19 +98,17 @@ class Keylogger extends Component {
                     <input
                         placeholder='Add something to the list...'
                         type='text'
-                        id="textField"
                         onChange={this.handleChange}
                         value={this.state.textValue}
                         onKeyPress={this.wasEnter}
                         className="input"
-                    />
+                        />
                     <button onClick={this.handleValueAdd}>Add</button>
                 </div>
                 <div className="search">
                     <input
                         placeholder='Search for something in the list...'
                         type='text'
-                        id="textField"
                         onChange={this.handleSearch}
                     />
                 </div>
@@ -117,9 +116,9 @@ class Keylogger extends Component {
                     Input Value: {this.state.textValue}
                 </div>
                 <div className='add'>
-                    <button onClick={this.clearList}>Clear List</button>
+                    <Button onClick={this.clearList}>Clear List</Button>
                     <ol>
-                        {this.state.searchValue === '' ? items : searchList.length ? searchList : <li>These arent the Droids you're looking for</li>}
+                        {this.state.searchValue === '' ? list : searchList.length ? searchList : <li>These are not the droids you're looking for.</li>}
                     </ol>
                 </div>
             </div>
