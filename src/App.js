@@ -6,12 +6,12 @@ import {
   Switch
 } from 'react-router-dom';
 import Helmet from './Components/Helmet'
-import './App.css';
 import Keylogger from './Pages/Keylogger';
 import Codelist from './Pages/Codelist';
 import Calculator from './Pages/Calculator';
 import Tacos from './Pages/Tacos';
 import NotFound from './Pages/NotFound';
+import Testing from './Pages/Testing';
 
 
 
@@ -22,18 +22,80 @@ class App extends Component {
         <Helmet />
         <Router>
           <div>
-            <ul className="Nav_Menu">
-              <h1>Helio Training React Exercises</h1>
-              <li><NavLink to='/' className="Nav_Link1">Home</NavLink></li>
-              <li><NavLink to='/Keylogger' className="Nav_Link2">Keylogger</NavLink></li>
-              <li><NavLink to='/Calculator' className="Nav_Link3">Calculator</NavLink></li>
-              <li><NavLink to='/CodeList' className="Nav_Link4">Code List</NavLink></li>
+            <ul 
+              style={{
+                listStyle: 'none', 
+                display: 'inline-grid',
+                gridTemplateColumns: '10px auto 100px 100px 100px 100px 100px 10px',
+                width:'100%'
+                }}>
+              <h1 style={{
+                    gridColumnStart: '2',
+                    gridColumnEnd: 'span 1'
+                  }}
+                  >Helio Training React Exercises</h1>
+              <li>
+                <NavLink
+                  to='/' 
+                  style={{
+                    gridColumnStart: '3',
+                    gridColumnEnd: 'span 1',
+                    textDecoration: 'none',
+                    color: 'black'
+                  }}
+                >Home</NavLink></li>
+              <li>
+                <NavLink
+                  to='/Keylogger' 
+                  style={{
+                    gridColumnStart: '4',
+                    gridColumnEnd: 'span 1',
+                    textDecoration: 'none',
+                    color: 'black'
+                  }}
+                >Keylogger</NavLink></li>
+              <li>
+                <NavLink
+                  to='/Calculator' 
+                  style={{
+                    gridColumnStart: '5',
+                    gridColumnEnd: 'span 1',
+                    textDecoration: 'none',
+                    color: 'black'
+                  }}
+                >Calculator</NavLink></li>
+              <li>
+                <NavLink
+                  to='/CodeList' 
+                  style={{
+                    gridColumnStart: '6',
+                    gridColumnEnd: 'span 1',
+                    textDecoration: 'none',
+                    color: 'black'
+                  }}
+                >Code List</NavLink></li>
+                <li>
+                  <NavLink
+                    to='/Testing' 
+                    style={{
+                      gridColumnStart: '6',
+                      gridColumnEnd: 'span 1',
+                      textDecoration: 'none',
+                      color: 'black'
+                    }}
+                  >Testing</NavLink></li>
             </ul>
             <Switch> 
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={()=>(
+                <div style={{ textAlign:'center' }}>
+                  <hr/>
+                  <h1>Home</h1>
+                </div>
+              )} />
               <Route path="/Keylogger" component={Keylogger} />
               <Route path="/Calculator" component={Calculator} />
               <Route path="/CodeList" component={Codelist} />
+              <Route path="/Testing" component={Testing} />
               <Route path="/Tacos" component={Tacos} />
               <Route component={NotFound} />
             </Switch>
@@ -43,14 +105,5 @@ class App extends Component {
     );
   }
 }
-
-
-const Home = () => (
-  <div>
-    <hr />
-    <h2>Home</h2>
-  </div>
-)
-
 
 export default App;

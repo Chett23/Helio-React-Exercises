@@ -1,8 +1,9 @@
 import React from 'react';
+import Body from '../Components/Body';
 
 export default () => (
-    <React.Fragment>
+    <Body justify='center'>
         <hr />
         <h1 style={{ textAlign: 'center' }}>404 Error</h1>
-    </React.Fragment>
+    </Body>
 )

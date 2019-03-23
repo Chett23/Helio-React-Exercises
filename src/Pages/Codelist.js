@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from '../Components/List';
 import Button from '../Components/Button';
+import Body from '../Components/Body';
 
 class Codelist extends Component {
   state = {
@@ -20,22 +21,25 @@ class Codelist extends Component {
 
   render() {
     return (
-      <div className="excersise">
+      <Body justify='center'>
         <hr />
         <h1>Code List</h1>
-        <ul>Some ski resorts to vist:
+        Some ski resorts to vist:
+        <ul>
           <br />
           <List
+            listStyle='none'
+            marginLeft='-65px'
             items={this.state.skiResorts.map((item, i) => (
               <div>
-                <span>{item}</span>
+                {item}
                 <Button onClick={this.clearItem(i)}>x</Button>
               </div>
             ))}
           />
         </ul>
         <br />
-      </div>
+      </Body>
     );
   }
 }

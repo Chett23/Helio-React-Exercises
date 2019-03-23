@@ -1,13 +1,14 @@
 import React from 'react';
 import Tacos from '../imgs/Tacos.gif';
+import Body from '../Components/Body';
 
 
 export default () => (
-    <React.Fragment>
+    <Body>
         <hr />
         <div style={{ textAlign: 'center' }}>
             <h1 >Tacos for Edmundo!!!</h1>
-            <img src={Tacos}  />
+            <img src={Tacos} alt='' />
         </div>
-    </React.Fragment>
+    </Body>
 )

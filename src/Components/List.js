@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const List = ({items}) => (
-    <ul>
-        {items.map((item, i) => (
-            <li key={i}>{item}</li>
-        ))}
+const List = (props) => (
+    <ul style={{listStyle: props.listStyle, marginLeft: props.marginLeft}}>
+      {props.items.map((item, i) => (
+        <li key={i}>{item}</li>
+      ))}
     </ul>
 )
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NumberPad from '../Components/NumberPad';
 import Button from '../Components/Button';
+import Body from '../Components/Body';
 
 class Calculator extends Component {
   state = {
@@ -35,22 +36,18 @@ class Calculator extends Component {
 
   render() {
     return (
-      <div className='excersise'>
+      <Body justify= 'center'>
       <hr />
         <h1>Calculator</h1>
-        Num 1: <input onChange={this.handleChangeNum1} type="text" />
-        <br />
-        Num 1: <input onChange={this.handleChangeNum2} type="text" />
-        <br />
-        <div>
-          <Button width='50px' color='blue' textColor='white' onClick={this.add}>+</Button>
-          <Button width='50px' color='red' onClick={this.sub}>-</Button>
-          <Button width='50px' color='green' onClick={this.multiply}>*</Button>
-          <Button width='50px' color='yellow' onClick={this.divide}>/</Button>
-        </div>
-        <br /> 
         {this.state.total}
-      </div>
+        <div>
+          <Button width='50px' height='50px'color='blue' textColor='white' onClick={this.add}>+</Button>
+          <Button width='50px' height='50px'color='red' onClick={this.sub}>-</Button>
+          <Button width='50px' height='50px'color='green' onClick={this.multiply}>*</Button>
+          <Button width='50px' height='50px'color='yellow' onClick={this.divide}>/</Button>
+          <NumberPad btnWidth='50px' btnHeight='50px' />
+        </div>
+      </Body>
     );
   }
 }
